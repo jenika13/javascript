@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<title>Simple Calculator</title>
+	<style>
+		body{
+			margin: 50px;
+		}
+		.col1{
+			border-radius: 10px;
+			padding: 30px;
+			background-color: lightgray;
+		}
+		.operation{
+			margin-top: 30px;
+		}
+		select{
+			margin-left: 20px;
+		}
+		.button{
+			text-align: center;
+			margin-top: 40px;
+		}
+		.result-text{
+			margin-top: 40px;
+		}
+		.form-inline input{
+			margin-left: 20px
+		}
+	</style>
+</head>
+<body>
+
+	<script type="text/javascript">
+		function calc()
+		{
+			var num1, num2, ans, operator;
+			num1=document.getElementById('first').value;
+			num2=document.getElementById('second').value;
+			operator=document.getElementById('operator').value;
+			switch(operator){
+				case '+':
+				ans=parseInt(num1)+parseInt(num2);
+				document.getElementById('result').value=ans;
+				break;
+
+				case '-':
+				ans=parseInt(num1)-parseInt(num2);
+				document.getElementById('result').value=ans;
+				break;
+
+				case '*':
+				ans=parseInt(num1)*parseInt(num2);
+				document.getElementById('result').value=ans;
+				break;
+
+				case '/':
+				ans=parseInt(num1)/parseInt(num2);
+				document.getElementById('result').value=ans;
+				break;
+			}
+		}
+	</script>
+
+	<div class="container">
+		<div class="row">
+			<div class="col1 col-sm-12 col-md-4 offset-md-4">
+				<div class="heading" style="text-align: center;">
+					<h1>Simple Calculator</h1>
+				</div>
+				<div class="operation">
+					<div class="form-group input-group-sm">
+						<label for="first">Enter first no. : </label>
+						<input class="form-control" type="text" name="t1" id="first" required>
+					</div>
+					<div class="form-group input-group-sm">
+						<label for="second">Enter second no. : </label>
+						<input class="form-control" type="text" name="t2" id="second" required>
+					</div>
+					<div class="form-inline input-group-sm">
+						<label for="operator">Choose an Operator : </label>
+						<select id="operator" class="form-control">
+							<option>+</option>
+							<option>-</option>
+							<option>*</option>
+							<option>/</option>
+						</select>
+					</div>
+					<div class="button">
+						<button class="btn btn-success" onclick="calc()">Show Result</button>
+					</div>
+					<div class="result-text form-inline justify-content-center">
+						<label for="result">Result : </label>
+						<input class="form-control form-control-sm" type="text" name="t3" id="result">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
