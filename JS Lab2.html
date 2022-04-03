@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<title>Sign-up</title>
+	<style>
+		body{
+			margin: 50px;
+		}
+		.heading{
+			text-align: center;
+		}
+		.signup-form{
+			margin-top: 50px;
+			background-color: #E8E8E8;
+			padding: 20px;
+			border: 1px solid #DCDCDC;
+			border-radius: 7px;
+		}
+		.button{
+			text-align: center;
+			margin-top: 40px;
+		}
+		.error{
+			color: red;
+			font-size: 90%;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col col-sm-12 col-md-4 offset-md-4">
+
+				<div class="heading"><h3>Sign-Up</h3></div>
+
+				<div class="signup-form">
+
+					<form class="form" action="#" method="POST" id="form" onsubmit="return validateForm()">
+
+						<div class="form-group input group-sm">
+							<label for="name">Name : </label>
+							<input class="form-control" type="text" name="t1" id="name">
+							<div class="error" id="nameErr"></div>
+						</div>
+
+						<div class="form-group input-group-sm">
+							<label for="email">Email : </label>
+							<input class="form-control" type="text" name="t2" id="email">
+							<div class="error" id="emailErr"></div>
+						</div>
+
+						<div class="form-group input-group-sm">
+							<label for="pwd">Password : </label>
+							<input class="form-control" type="password" name="p1" id="pwd">
+							<div class="error" id="pwdErr"></div>
+						</div>
+
+						<div class="form-group input-group-sm">
+							<label for="phone">Mobile Number : </label>
+							<input class="form-control" type="tel" name="n1" id="number">
+							<div class="error" id="numberErr"></div>
+						</div>
+
+						<div class="button">
+							<button class="btn btn-success" value="Submit" type="Submit">Submit</button>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+
+		// Defining a function to display error message
+		function printError(elemId, hintMsg)
+		{
+			document.getElementById(elemId).innerHTML = hintMsg;
+		}
+
+		//Defining a funcion to validate form
+		function validateForm()
+		{
+			var name=document.getElementById('name').value;
+			var email=document.getElementById('email').value;
+			var pwd=document.getElementById('pwd').value;
+			var number=document.getElementById('number').value;
+
+			//Defining error variables with default value
+			var nameErr = emailErr = pwdErr = numberErr = true;
+
+			//Validating name
+			if(name=="")
+			{
+				printError("nameErr","Please enter your name");
+			}
+			else if(name.length<3)
+			{
+				printError("nameErr","Name should not be less than 3 charachters");
+			}
+			else{
+				printError("nameErr","");
+				nameErr=false;
+			}
+
+			//Validating email address
+			if(email=="")
+			{
+				printError("emailErr","Please enter your email id");
+			}
+			else
+			{
+				//Regular expression for basic email validation
+				var regex=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+				if(regex.test(email) === false)
+				{
+					printError("emailErr","Please enter a valid email id");
+				}
+				else
+				{
+					printError("emailErr","");
+					emailErr=false;
+				}
+			}
+
+			//Validating password
+			if(pwd=="")
+			{
+				printError("pwdErr","Please enter a Password");
+			}
+			else if(pwd.length<6)
+			{
+				printError("pwdErr","Password must have atleast 6 characters");
+			}
+			else
+			{
+				printError("pwdErr","");
+				pwdErr=false;
+			}
+
+			//Validating phone number
+			if(number=="")
+			{
+				printError("numberErr","Please enter your number");
+			}
+			else if(number.length<10)
+			{
+				printError("numberErr","Please enter a valid 10 digit mobile number")
+			}
+			else
+			{
+				printError("numberErr","")
+				numberErr=false;
+			}
+
+			//Preventing the form from being submitted if there are any errors
+			if((nameErr || emailErr || mobileErr || countryErr || genderErr) == true)
+			{
+				return false;
+			}
+		}
+	</script>
+</body>
+</html>
